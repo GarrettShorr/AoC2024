@@ -19,3 +19,14 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+fun <T> List<List<T>>.transpose(): List<List<T>> {
+    if (isEmpty() || this[0].isEmpty()) return this
+
+    val width = this[0].size
+
+    return (0 until width).map { i ->
+        this.map { it[i] }
+    }
+}
+
