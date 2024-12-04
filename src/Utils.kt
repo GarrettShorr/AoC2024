@@ -30,3 +30,15 @@ fun <T> List<List<T>>.transpose(): List<List<T>> {
     }
 }
 
+fun List<String>.transpose() : List<String> {
+    if (isEmpty() || this[0].isEmpty()) return this
+    val transposed = mutableListOf<String>()
+    for(c in 0 until this[0].length) {
+        var col = ""
+        for(r in 0 until this.size) {
+            col += this[r][c]
+        }
+        transposed.add(col)
+    }
+    return transposed
+}
