@@ -4,3 +4,7 @@
 build
 src/**/*.txt
 local.properties
+src/Day01.txt
+src/Day02.txt
+src/Day03.txt
+src/Day04.txt
