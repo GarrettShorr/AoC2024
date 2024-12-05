@@ -27,15 +27,17 @@ fun main() {
         println(ruleMap)
 
         val pages = input.subList(input.indexOf("") + 1, input.size).map { it.split(",").map { it.toInt() } }
-        var sum = 0
-        for(page in pages) {
-            if(isValidPage(ruleMap, page)) {
-                sum += page[page.size/2]
-            }
-        }
+//        var sum = 0
+//        for(page in pages) {
+//            if(isValidPage(ruleMap, page)) {
+//                sum += page[page.size/2]
+//            }
+//        }
+
+        return pages.filter { isValidPage(ruleMap, it) }.sumOf { it[it.size/2] }
 
 
-        return sum
+//        return sum
     }
 
 
@@ -66,15 +68,17 @@ fun main() {
         println(ruleMap)
 
         val pages = input.subList(input.indexOf("") + 1, input.size).map { it.split(",").map { it.toInt() } }
-        var sum = 0
-        for(page in pages) {
-            if(!isValidPage(ruleMap, page)) {
-                var newPage = reorder(ruleMap, page)
-                sum += newPage[newPage.size/2]
-            }
-        }
+//        var sum = 0
+//        for(page in pages) {
+//            if(!isValidPage(ruleMap, page)) {
+//                var newPage = reorder(ruleMap, page)
+//                sum += newPage[newPage.size/2]
+//            }
+//        }
 
-        return sum
+        return pages.filter { !isValidPage(ruleMap, it) }.map { reorder(ruleMap, it) }.sumOf { it[it.size/2] }
+
+//        return sum
     }
 
     // Test if implementation meets criteria from the description, like:
