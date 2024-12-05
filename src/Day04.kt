@@ -85,7 +85,7 @@ fun main() {
     fun part1(input: List<String>): Int {
         var sum = 0
         input.forEach { sum += horizontalCount(it) }
-        input.transpose().forEach { sum += horizontalCount(it) }
+        input.transposeStringList().forEach { sum += horizontalCount(it) }
         val diags = getDiags(input)
         val otherDiags = getOtherDiags(input)
 
