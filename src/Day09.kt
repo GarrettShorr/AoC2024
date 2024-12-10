@@ -17,7 +17,7 @@ fun main() {
     fun part1(input: List<String>): Long {
         val diskMap = input.map { it.windowed(1).map { it.toInt() } }[0].chunked(2)
         val blockMap = mutableListOf<Block>()
-        println(diskMap)
+//        println(diskMap)
         diskMap.forEachIndexed { i, pair ->
             for(j in 0..<pair[0]) {
                 blockMap.add(Block(i))
@@ -28,7 +28,7 @@ fun main() {
                 }
             }
         }
-        println(blockMap)
+//        println(blockMap)
 
         var lastNonEmptyIndex = blockMap.size - 1
         var firstEmpty = 0
@@ -53,7 +53,7 @@ fun main() {
                 firstEmpty++
             }
         }
-        println(blockMap)
+//        println(blockMap)
 
         // calculate
         var sum = 0L
@@ -70,7 +70,7 @@ fun main() {
     fun part2(input: List<String>): Long {
         val diskMap = input.map { it.windowed(1).map { it.toInt() } }[0].chunked(2)
         val blockMap = mutableListOf<Block>()
-        println(diskMap)
+//        println(diskMap)
         diskMap.forEachIndexed { i, pair ->
             for(j in 0..<pair[0]) {
                 blockMap.add(Block(i))
@@ -81,7 +81,7 @@ fun main() {
                 }
             }
         }
-        println(blockMap)
+//        println(blockMap)
 
         var lastNonEmptyIndex = blockMap.size - 1
         var firstEmpty = 0
@@ -139,7 +139,7 @@ fun main() {
             firstEmpty = 0
 //            println(blockMap)
         }
-        println(blockMap)
+//        println(blockMap)
 
         // calculate
         var sum = 0L
@@ -160,8 +160,12 @@ fun main() {
 
     // Read the input from the `src/Day01.txt` file.
 //    val input = readInput("Day01")
+    val start = System.currentTimeMillis()
+
     val input = readInput("Day09")
-//    part1(input).println()
-    part2(input).println()
+    part1(input).println()
+//    part2(input).println()
+    val end = System.currentTimeMillis()
+    println("time for part 1: ${end - start} ms")
 }
 
