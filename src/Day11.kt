@@ -148,4 +148,3 @@ fun main() {
 //    part1(input).println()
     part2Refactor(input).println()
 }
-

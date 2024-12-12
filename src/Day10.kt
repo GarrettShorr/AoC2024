@@ -49,7 +49,6 @@ fun main() {
     trailqueue.addAll(neighbors)
     neighbors.forEach { trailhead.paths.add(mutableListOf(it)) }
     println(trailhead)
-    var forks = mutableListOf<Triple<Int, Int, Int>>()
     val visited = mutableListOf<Triple<Int, Int, Int>>()
     while (trailqueue.isNotEmpty()) {
       val point = trailqueue.removeFirst()
@@ -59,10 +58,7 @@ fun main() {
       println("CURRENT POINT: $point")
 
       val newNeighbors = findNeighbors(grid, point)
-      val numForks = newNeighbors.size - 1
-      repeat(numForks) {
-        forks.add(point)
-      }
+
 
        for (path in trailhead.paths) {
           if (!path.contains(point) && path.last().third == point.third - 1 &&
@@ -93,12 +89,7 @@ fun main() {
         trailhead.paths.addAll(newPaths)
       }
 
-//      repeat(newNeighbors.size - count) {
-//        val path = trailhead.paths.findLast { it.last() == point }
-//        if (path != null) {
-//          trailhead.paths.add(path)
-//        }
-//      }
+
       trailqueue.addAll(newNeighbors)
       println("before: ${trailhead.paths}")
       if (newNeighbors.size > 1) {
