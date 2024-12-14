@@ -127,8 +127,10 @@ fun main() {
     }
 
     fun part2Refactor(input: List<String>) : Long {
-        var stones = input[0].split(" ").map { it.toLong() }.groupingBy { it }
-            .eachCount().toMutableMap().map{ it -> it.key.toLong() to it.value.toLong() }.toMap().toMutableMap()
+        var stones = input[0].split(" ").map { it.toLong() }
+            .groupingBy { it }.eachCount()
+            .mapValues { it.value.toLong() }
+            .toMutableMap()
         println(stones)
         repeat(75) {
             stones = blinkMap(stones)

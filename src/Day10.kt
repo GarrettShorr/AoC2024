@@ -145,6 +145,33 @@ fun main() {
     return trailheads.sumOf { it.distinctScore() }
   }
 
+  fun findUnique9s(grid: List<List<Int>>, trailhead: Trailhead): Int {
+    var locs = mutableListOf<Triple<Int, Int, Int>>()
+    var first = Triple(trailhead.row, trailhead.col, 0)
+    locs.add(first)
+    var height = 0
+    while(locs.isNotEmpty()) {
+      if(height == 9) {
+        return locs.size
+      }
+      var nextlocs = mutableListOf<Triple<Int, Int, Int>>()
+      locs.forEach { nextlocs.addAll(findNeighbors(grid, it)) }
+      locs = nextlocs.toMutableList()
+      height++
+    }
+    return 0
+  }
+
+  fun part1Refactor(input: List<String>): Int {
+    val grid = input.map { it.windowed(1).map { it.toInt() } }
+    val trailheads: List<Trailhead> = findTrailheads(grid)
+    var sum = 0
+    for (trailhead in trailheads) {
+      sum += findUnique9s(grid, trailhead)
+    }
+    return sum
+  }
+
 
 // Test if implementation meets criteria from the description, like:
 //    check(part1(listOf("test_input")) == 1)
