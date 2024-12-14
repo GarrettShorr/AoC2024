@@ -3,11 +3,13 @@ import org.jetbrains.kotlinx.kandy.dsl.continuous
 import org.jetbrains.kotlinx.kandy.dsl.invoke
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.points
 import org.jetbrains.kotlinx.kandy.letsplot.scales.Transformation
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
 import org.jetbrains.kotlinx.kandy.letsplot.x
 import org.jetbrains.kotlinx.kandy.letsplot.y
+import org.jetbrains.kotlinx.kandy.util.color.Color
 import java.awt.Point
 
 fun main() {
@@ -92,6 +94,18 @@ fun main() {
                         x(xvar)
                         y(yvar) {
                             scale = continuous(transform = Transformation.REVERSE)
+                        }
+                        color = Color.GREEN
+                        layout {
+                            style {
+                                axis.line { blank = true }
+                                axis.ticks { blank = true }
+                                axis.title { blank = true }
+                                axis.text { blank = true }
+                                panel.grid.lineGlobal { blank = true }
+                                panel.borderLine { blank = true }
+
+                            }
                         }
                         symbol = Symbol.SQUARE
                     }
