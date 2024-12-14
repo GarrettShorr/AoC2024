@@ -1,3 +1,13 @@
+import org.jetbrains.kotlinx.dataframe.api.dataFrameOf
+import org.jetbrains.kotlinx.kandy.dsl.continuous
+import org.jetbrains.kotlinx.kandy.dsl.invoke
+import org.jetbrains.kotlinx.kandy.dsl.plot
+import org.jetbrains.kotlinx.kandy.letsplot.export.save
+import org.jetbrains.kotlinx.kandy.letsplot.layers.points
+import org.jetbrains.kotlinx.kandy.letsplot.scales.Transformation
+import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
+import org.jetbrains.kotlinx.kandy.letsplot.x
+import org.jetbrains.kotlinx.kandy.letsplot.y
 import java.awt.Point
 
 fun main() {
@@ -52,29 +62,47 @@ fun main() {
         }
         var finalLocations = mutableListOf<Point>()
         var step = 0
-        repeat(1000000) {
+        repeat(7000) {
             guardInitialLocsAndVelocities.forEach {
                 finalLocations.add(findLocationAfter(Pair(WIDTH, HEIGHT), it.first, it.second, 1))
             }
             step++
-//            if(finalLocations.size == finalLocations.toMutableSet().size) {
-            if(step in 6620..6650) {
+            if(finalLocations.size == finalLocations.toMutableSet().size) {
+//            if(step in 6620..6650) {
                 println("$step SECONDS LATER...")
 
                 for (r in 0..HEIGHT) {
                     for (c in 0..WIDTH) {
                         if (Point(c, r) in finalLocations) {
-                            print("▮")
+                            print("▮▮")
                         } else {
-                            print(" ")
+                            print("  ")
                         }
                     }
                     println()
                 }
+                val dataset = dataFrameOf(
+                    "xvar" to finalLocations.map { it.x },
+                    "yvar" to finalLocations.map { it.y }
+                )
+                val xvar = "xvar"<Int>()
+                val yvar = "yvar"<Int>()
+                plot(dataset) {
+                    points {
+                        x(xvar)
+                        y(yvar) {
+                            scale = continuous(transform = Transformation.REVERSE)
+                        }
+                        symbol = Symbol.SQUARE
+                    }
+                }.save("test.png")
+
             }
             guardInitialLocsAndVelocities = guardInitialLocsAndVelocities.mapIndexed { index, pair -> Pair(finalLocations[index], pair.second) }.toMutableList()
             finalLocations.clear()
         }
+
+
         return 0
     }
 
