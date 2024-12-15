@@ -83,33 +83,33 @@ fun main() {
                     }
                     println()
                 }
-                val dataset = dataFrameOf(
-                    "xvar" to finalLocations.map { it.x },
-                    "yvar" to finalLocations.map { it.y }
-                )
-                val xvar = "xvar"<Int>()
-                val yvar = "yvar"<Int>()
-                plot(dataset) {
-                    points {
-                        x(xvar)
-                        y(yvar) {
-                            scale = continuous(transform = Transformation.REVERSE)
-                        }
-                        color = Color.GREEN
-                        layout {
-                            style {
-                                axis.line { blank = true }
-                                axis.ticks { blank = true }
-                                axis.title { blank = true }
-                                axis.text { blank = true }
-                                panel.grid.lineGlobal { blank = true }
-                                panel.borderLine { blank = true }
+    val dataset = dataFrameOf(
+        "xvar" to finalLocations.map { it.x },
+        "yvar" to finalLocations.map { it.y }
+    )
+    val xvar = "xvar"<Int>()
+    val yvar = "yvar"<Int>()
+    plot(dataset) {
+        points {
+            x(xvar)
+            y(yvar) {
+                scale = continuous(transform = Transformation.REVERSE)
+            }
+            color = Color.GREEN
+            layout {
+                style {
+                    axis.line { blank = true }
+                    axis.ticks { blank = true }
+                    axis.title { blank = true }
+                    axis.text { blank = true }
+                    panel.grid.lineGlobal { blank = true }
+                    panel.borderLine { blank = true }
 
-                            }
-                        }
-                        symbol = Symbol.SQUARE
-                    }
-                }.save("test.png")
+                }
+            }
+            symbol = Symbol.SQUARE
+        }
+    }.save("test.png")
 
             }
             guardInitialLocsAndVelocities = guardInitialLocsAndVelocities.mapIndexed { index, pair -> Pair(finalLocations[index], pair.second) }.toMutableList()
