@@ -23,8 +23,25 @@ fun main() {
         var instructionPointer = 0
         var output = mutableListOf<Long>()
 //        var minA = 35581177699116
-        var minA = 9336504L
-        println(minA.toString(2))
+        var minA = 3L * 8
+        minA = 24L * 8
+        minA = 192L * 8
+        minA = 1538L * 8
+        minA = 12304L * 8
+        minA = 98446L * 8
+        minA = 788830L * 8
+        minA = 6310647L * 8
+        minA = 50485181L * 8
+        minA = 403881454L * 8
+        minA = 3231051633L * 8
+        minA = 25848413064L * 8
+        minA = 206787304516L * 8
+        minA = 1654298436134L * 8
+        minA = 13234387489075L * 8
+        minA = 105875099912602
+//        minA = 1992L * 8
+//        minA = 15941L * 8
+        println(106077315697050L.toString(2).length)
 //        println(Math.pow(8.0, 16.0).toLong())
 //        println(Math.pow(2.0, 48.0).toLong())
 //        var minA = 105075099993696L
@@ -35,7 +52,7 @@ fun main() {
 //        var minA = 35184785000000L
 //        println("${184.toString(2)}}")
 //        outer@while(true) {
-        repeat(1) {
+        repeat(200*8) {
             a = minA
             instructionPointer = 0
             while (instructionPointer < program.size - 1) {
