@@ -41,7 +41,7 @@ fun main() {
         minA = 105875099912602
 //        minA = 1992L * 8
 //        minA = 15941L * 8
-        println(106077315697050L.toString(2).length)
+        println(29.toString(2))
 //        println(Math.pow(8.0, 16.0).toLong())
 //        println(Math.pow(2.0, 48.0).toLong())
 //        var minA = 105075099993696L
@@ -52,7 +52,7 @@ fun main() {
 //        var minA = 35184785000000L
 //        println("${184.toString(2)}}")
 //        outer@while(true) {
-        repeat(200*8) {
+        repeat(1) {
             a = minA
             instructionPointer = 0
             while (instructionPointer < program.size - 1) {
